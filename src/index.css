@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-brand-bg: var(--bg);
+  --color-brand-card: var(--card);
+  --color-brand-border: var(--border);
+  --color-brand-text-dim: var(--text-dim);
+  --color-brand-label: var(--label);
+  --color-brand-primary: var(--primary);
+}
+
+@layer base {
+  :root {
+    --bg: #fdfaf6;
+    --card: #ffffff;
+    --border: #e8e2d9;
+    --text-dim: #6b635b;
+    --label: #a6988a;
+    --primary: #1a1714;
+    --selection-bg: #1a1714;
+    --selection-text: #ffffff;
+  }
+
+  [data-theme='dark'] {
+    --bg: #070707;
+    --card: rgba(255, 255, 255, 0.02);
+    --border: rgba(255, 255, 255, 0.06);
+    --text-dim: #a1a1aa;
+    --label: #52525b;
+    --primary: #e5e5e5;
+    --selection-bg: #ffffff;
+    --selection-text: #000000;
+  }
+
+  body {
+    background-color: var(--color-brand-bg);
+    color: var(--color-brand-primary);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.5s ease, color 0.5s ease;
+  }
+
+  ::selection {
+    background-color: var(--selection-bg);
+    color: var(--selection-text);
+  }
+}
+
+.minimal-button {
+  @apply px-6 py-2 border border-brand-border rounded-full text-xs uppercase tracking-widest font-medium transition-all duration-300 hover:bg-brand-primary hover:text-brand-bg hover:border-brand-primary;
+}
+
+.section-label {
+  @apply text-[12px] uppercase tracking-[0.1em] text-brand-label font-bold mb-4;
+}
+
+.project-card {
+  @apply p-8 border border-brand-border bg-brand-card transition-all duration-300 hover:border-brand-primary/20 shadow-sm hover:shadow-md;
+}
+
+.skill-pill {
+  @apply text-[11px] px-3 py-1 border border-brand-border rounded-full text-brand-text-dim transition-colors duration-300;
+}
+
+.custom-cursor {
+  @apply fixed top-0 left-0 w-8 h-8 rounded-full border border-brand-primary/20 pointer-events-none z-[100] mix-blend-difference hidden md:block;
+}
+
+.terminal-container {
+  @apply fixed inset-0 z-[1000] bg-brand-primary p-8 font-mono text-sm flex flex-col text-brand-bg;
+}
+
+.terminal-line {
+  @apply mb-1 flex gap-3;
+}
+
+.terminal-prompt {
+  @apply text-emerald-500 font-bold;
+}
+
+.scroll-progress {
+  @apply fixed top-0 left-0 right-0 h-[2px] bg-brand-primary z-[101] origin-left;
+}
